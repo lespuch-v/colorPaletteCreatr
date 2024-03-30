@@ -4,6 +4,11 @@ import OpenAI from 'openai';
 import { systemPromptColorPaletteObject } from './systemPrompt.js';
 
 const app = express();
+
+// const corsOptions = {
+//   origin: '*',
+// };
+
 app.use(cors());
 app.use(express.json());
 const port = 3000;
