@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ColorService {
 
-  private url: string = 'http://localhost:3000/color-palette'
+  private url: string = 'http://localhost:3000/color-palette';
 
   data: any;
 
@@ -15,5 +15,11 @@ export class ColorService {
 
   postData( data: any){
     return this.http.post(this.url, data)
+  }
+
+  testBackEnd(){
+    return this.http.get('http://localhost:3000/test').subscribe((response)=> {
+      console.log(response)
+    })
   }
 }

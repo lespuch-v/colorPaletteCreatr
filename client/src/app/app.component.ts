@@ -11,16 +11,26 @@ import { ColorService } from './color.service';
 })
 export class AppComponent {
   title = 'colorPickr';
-  userInput: string = 'shades of black';
-
-  constructor(private color: ColorService) {
+  userInput: { user_input: string } = {
+    "user_input": "car"
+  }
+  mockData = {
+    "Midnight Black": "#000000",
+    "Metallic Silver": "#A0A0A0",
+    "Racing Red": "#FF0000",
+    "Carbon Fiber Gray": "#333333",
+    "Classic White": "#FFFFFF"
   }
 
-  sendData(){
-    this.color.postData(this.userInput).subscribe(response => {
-      console.log(response)
-    })
+  constructor(private color: ColorService) {}
+
+  // TODO: Use me later once you have your front-end ready
+  // sendData(){
+  //   this.color.postData(this.userInput).subscribe(response => {
+  //     console.log(response)
+  //   })
+  // }
+  test() {
+    console.log('test method was triggered!')
   }
-
-
 }
