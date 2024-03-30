@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ColorService } from './color.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,16 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'colorPickr';
+  userInput: string = 'shades of black';
+
+  constructor(private color: ColorService) {
+  }
+
+  sendData(){
+    this.color.postData(this.userInput).subscribe(response => {
+      console.log(response)
+    })
+  }
+
+
 }
