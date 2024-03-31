@@ -1,0 +1,12 @@
+<div class="my-input-container">
+  <input
+    [(ngModel)]="userInput"
+    placeholder="Color palette Ex. Google Brand colors..."
+    type="text"
+    (keydown.enter)="handleUserColorPick()"
+    class="usr-input"
+    required
+    id="userInput">
+  <button [disabled]="loadingData && inputIsNotEmpty" class="usr-button" (click)="handleUserColorPick()">Discover Colors</button>
+</div>
+

@@ -1,0 +1,33 @@
+.usr-input{
+  height: 50px;
+  width: 350px;
+  padding: 0 15px;
+  margin: 0;
+  border: none;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.usr-button{
+  height: 52px;
+  margin: 0;
+  padding: 0 15px;
+  border: none;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #b2dffe;
+  transition: all 100ms;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.usr-button:hover{
+  background-color: #91d2ff;
+}
+
+.my-input-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

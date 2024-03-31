@@ -1,0 +1,27 @@
+.main-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.user-input-container{
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.color-container{
+  background-color: lightgray;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-content: space-between;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.loadingAnim{
+  position: absolute;
+}

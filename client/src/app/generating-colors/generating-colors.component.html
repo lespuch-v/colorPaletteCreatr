@@ -1,0 +1,6 @@
+<ng-container *ngFor="let color of dataFromServer | keyvalue">
+  <section [style.background-color]="color.value" class="color-container">
+    <h1>{{ color.key }}</h1>
+    <h1>{{ color.value }}</h1>
+  </section>
+</ng-container>

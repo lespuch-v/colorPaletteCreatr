@@ -1,36 +1,40 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ColorService } from './color.service';
+import { UserInputComponent } from './user-input/user-input.component';
+import { JsonPipe, KeyValuePipe, NgForOf, NgIf } from '@angular/common';
+import { GeneratingColorsComponent } from './generating-colors/generating-colors.component';
+import { LoadingComponent } from './loading/loading.component';
+
+interface ColorResponse {
+  [key: string]: string;
+}
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, UserInputComponent, NgForOf, KeyValuePipe, JsonPipe, GeneratingColorsComponent, LoadingComponent, NgIf],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'colorPickr';
-  userInput: { user_input: string } = {
-    "user_input": "car"
-  }
-  mockData = {
-    "Midnight Black": "#000000",
-    "Metallic Silver": "#A0A0A0",
-    "Racing Red": "#FF0000",
-    "Carbon Fiber Gray": "#333333",
-    "Classic White": "#FFFFFF"
+  isLoading: boolean = false;
+  userInputServer: { user_input: string } = {
+    'user_input': ''
   }
 
-  constructor(private color: ColorService) {}
+  dataFromServer: ColorResponse = {};
 
-  // TODO: Use me later once you have your front-end ready
-  // sendData(){
-  //   this.color.postData(this.userInput).subscribe(response => {
-  //     console.log(response)
-  //   })
-  // }
-  test() {
-    console.log('test method was triggered!')
+  constructor(private color: ColorService) {
+  }
+
+  processUserInput(data: string) {
+    this.isLoading = true;
+    this.userInputServer.user_input = data;
+    this.color.postData(this.userInputServer).subscribe((response: any) => {
+      this.dataFromServer = JSON.parse(response)
+      this.isLoading = false;
+    });
   }
 }
