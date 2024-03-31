@@ -1,9 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import OpenAI from 'openai';
+import dotenv from 'dotenv';
 import { systemPromptColorPaletteObject } from './systemPrompt.js';
 
 const app = express();
+dotenv.config();
 
 // const corsOptions = {
 //   origin: '*',
@@ -13,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 const port = 3000;
 const openai = new OpenAI({
-  apiKey: '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',
+  apiKey: process.env.API_KEY,
 });
 
 app.post('/color-palette', async (req, res) => {
@@ -31,12 +33,8 @@ app.post('/color-palette', async (req, res) => {
       response_format: { type: 'json_object' },
     });
 
-    // console.log('OpenAI Response:', completion);
-    // console.log(completion.choices[0].message.content);
-
     const colorPalette = completion.choices[0].message.content;
     res.json(colorPalette); // Send the JSON object as the response
-    
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: 'Failed to fetch color palette' });
@@ -48,5 +46,6 @@ app.get('/test', (req, res) => {
 });
 
 app.listen(port, () => {
+  console.log('Server started!')
   console.log(`Server listening on port ${port}`);
 });
