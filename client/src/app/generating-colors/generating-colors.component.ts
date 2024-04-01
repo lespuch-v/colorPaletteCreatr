@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { KeyValuePipe, NgClass, NgForOf } from '@angular/common';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { KeyValuePipe, NgClass, NgForOf, NgIf } from '@angular/common';
+import { delay, of, tap } from 'rxjs';
 
 interface ColorResponse {
   [key: string]: string;
@@ -11,7 +12,8 @@ interface ColorResponse {
   imports: [
     KeyValuePipe,
     NgForOf,
-    NgClass
+    NgClass,
+    NgIf
   ],
   templateUrl: './generating-colors.component.html',
   styleUrl: './generating-colors.component.css'
@@ -20,6 +22,11 @@ export class GeneratingColorsComponent {
 
   @Input() dataFromServer: ColorResponse = {};
   hoveredIndex: number | null = null;
+  isCopied: boolean = false;
+  copyIndex: number | null = null;
+
+  constructor(private crd: ChangeDetectorRef) {
+  }
 
   getContrastYIQ(hexcolor: string): string {
     hexcolor = hexcolor.replace("#", "");
@@ -39,11 +46,26 @@ export class GeneratingColorsComponent {
   }
 
   handleCopy(index: number, hexColor: string) {
+    this.copyIndex = index;
+    this.isCopied = true; // Assuming you want to indicate copying has happened.
+
+    // Start a subscription that waits for 3 seconds before executing its content.
+    of(null).pipe(
+      delay(2000),
+      tap(() => {
+        this.isCopied = false;
+        this.copyIndex = null;
+        // Trigger change detection to update the view.
+        this.crd.detectChanges(); // Ensure this line is uncommented to apply changes.
+      })
+    ).subscribe();
+
     navigator.clipboard.writeText(hexColor).then(() => {
-      console.log('value copied:', hexColor)
+      console.log('Value copied:', hexColor);
     }, (error) => {
-      console.error('Failed co copy the value:', error)
-    })
+      console.error('Failed to copy the value:', error);
+    });
   }
+
 
 }

@@ -1,19 +1,23 @@
 <ng-container *ngFor="let color of dataFromServer | keyvalue; let i = index">
-
   <section
     [ngClass]="{ 'color-section-container-hovered': hoveredIndex === i }"
     (mouseenter)="handleMouseEnter(i)"
     (mouseleave)="HandleMouseLeave()"
     (click)="handleCopy(i, color.value)"
     [style.background-color]="color.value" class="color-container"
-           [style.color]="getContrastYIQ(color.value)">
+    [style.color]="getContrastYIQ(color.value)">
 
-    <h1 [ngClass]="{ 'color-container-hovered': hoveredIndex === i }"
-        class="header-value-keys">{{ color.key }}
+    <h1 [ngClass]="{ 'color-container-hovered': hoveredIndex === i }" class="header-value-keys">
+      {{ color.key }}
     </h1>
 
-    <h1 [ngClass]="{ 'color-container-hovered': hoveredIndex === i }"
-        class="header-value-keys">{{ color.value }}
+    <h1 *ngIf="copyIndex !== i || !isCopied" [ngClass]="{ 'color-container-hovered': hoveredIndex === i, 'copy-styled-animation': copyIndex === i && isCopied }"
+        class="header-value-keys">
+      {{ color.value }}
+    </h1>
+
+    <h1 *ngIf="copyIndex === i && isCopied" class="copy-styled-animation">
+      Copied!
     </h1>
   </section>
 </ng-container>

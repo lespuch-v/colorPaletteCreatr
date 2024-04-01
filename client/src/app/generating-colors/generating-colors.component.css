@@ -22,3 +22,14 @@
 .color-section-container-hovered{
   cursor: pointer;
 }
+
+.copy-styled-animation {
+  padding: 5px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  background-color: #b9ecbc;
+  color: #2c2942;
+  width: 100px;
+}
