@@ -3,10 +3,19 @@
     [(ngModel)]="userInput"
     placeholder="Color palette Ex. Google Brand colors..."
     type="text"
+    #colorPaletteInput="ngModel"
     (keydown.enter)="handleUserColorPick()"
     class="usr-input"
     required
     id="userInput">
-  <button [disabled]="loadingData && inputIsNotEmpty" class="usr-button" (click)="handleUserColorPick()">Discover Colors</button>
+  <button [disabled]="loadingData && inputIsNotEmpty" class="usr-button" (click)="handleUserColorPick()">Discover
+    Colors
+  </button>
 </div>
+<label *ngIf="displayInfoMessage" class="warning-message" for="userInput">
+  <span class="material-symbols-outlined">
+warning
+</span>
+  No value - Text input is empty...
+</label>
 

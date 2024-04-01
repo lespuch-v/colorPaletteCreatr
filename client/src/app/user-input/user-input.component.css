@@ -38,3 +38,10 @@
   align-items: center;
   z-index: 10;
 }
+
+.warning-message{
+  padding: 3px 12px;
+  color:#d05e5e;
+  display: flex;
+  align-items: center;
+}
