@@ -47,16 +47,14 @@ export class GeneratingColorsComponent {
 
   handleCopy(index: number, hexColor: string) {
     this.copyIndex = index;
-    this.isCopied = true; // Assuming you want to indicate copying has happened.
+    this.isCopied = true;
 
-    // Start a subscription that waits for 3 seconds before executing its content.
     of(null).pipe(
       delay(2000),
       tap(() => {
         this.isCopied = false;
         this.copyIndex = null;
-        // Trigger change detection to update the view.
-        this.crd.detectChanges(); // Ensure this line is uncommented to apply changes.
+        this.crd.detectChanges();
       })
     ).subscribe();
 
