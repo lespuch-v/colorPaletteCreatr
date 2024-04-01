@@ -1,4 +1,5 @@
 <main class="main-container">
+
   <section class="user-input-container">
     <app-user-input
       *ngIf="!isLoading"
@@ -6,9 +7,12 @@
       (userInputData)="processUserInput($event)">
     </app-user-input>
   </section>
-
-  <app-generating-colors class="color-container" [dataFromServer]="dataFromServer"></app-generating-colors>
+  <app-generating-colors
+    class="color-container"
+    [dataFromServer]="dataFromServer">
+  </app-generating-colors>
   <app-loading class="loadingAnim" *ngIf="isLoading" ></app-loading>
+
 </main>
 
 

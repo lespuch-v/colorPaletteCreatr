@@ -1,7 +1,7 @@
 .loadingStyling {
   position: absolute;
-  width: 137px!important;
-  height: 137px!important;
+  width: 97px!important;
+  height: 93px!important;
   opacity: 0.6;
   animation: pulseToRotate 300ms forwards, rotateAnimation 10s linear infinite 300ms; /* Combined animations with delay for smooth transition */
 }

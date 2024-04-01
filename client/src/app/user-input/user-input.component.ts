@@ -21,12 +21,13 @@ export class UserInputComponent {
   inputIsNotEmpty: boolean = true;
 
   handleUserColorPick() {
-    if(this.userInput === null || this.userInput === ''){
+    if (this.userInput === null || this.userInput === '') {
       this.inputIsNotEmpty = true;
       return;
-    }else{
+    } else {
       this.inputIsNotEmpty = false;
       this.userInputData.emit(this.userInput);
     }
   }
+
 }

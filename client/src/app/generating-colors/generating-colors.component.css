@@ -8,3 +8,17 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.header-value-keys{
+  font-weight: 500;
+}
+
+.color-container-hovered{
+  font-weight: 600;
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.color-section-container-hovered{
+  cursor: pointer;
+}
