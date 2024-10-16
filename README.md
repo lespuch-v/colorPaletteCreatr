@@ -13,6 +13,10 @@ This is a web application that generates a specific color based on user input. T
   - [Running the Application](#running-the-application)
 - [License](#license)
 
+## Picture
+![image](https://github.com/user-attachments/assets/deee7c9e-ca6a-4478-929d-6c1eeb261bd0)
+
+
 ## Project Overview
 This project allows users to input a description, and it uses the OpenAI API to generate a corresponding color code. The frontend is developed with Angular, while the backend is developed in Node.js, handling the API requests to OpenAI.
 
